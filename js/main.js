@@ -2,7 +2,6 @@
 var elList = document.querySelector("#movie_list");
 var elBookmarkedList = document.querySelector("#bookmarks-wrapper");
 var elMovieModal = document.querySelector(".movie-modal");
-// var elSearchResultNum = document.querySelector("#search-result-number");
 var elAlert = document.querySelector("#alert");
 var elForm = document.querySelector("#form");
 var elInputValue = document.querySelector("#input");
@@ -16,7 +15,7 @@ var elBookmarkTemplate = document.querySelector("#bookmarkTemplate").content;
 
 
 // Get sliced movies
-let slicedMovies = movies.slice(0, 100);    //movies arraydan bir qismini kesib ol
+let slicedMovies = movies.slice();    //movies arraydan bir qismini kesib ol
 
 
 
