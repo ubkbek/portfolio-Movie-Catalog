@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>4</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="h1 m-0 my-2 text-center">Movie catalog</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="row">
+                <!-- left -->
+                <div class="col-md-4">
+                    <div class="top-side mb-3">
+                        <form id="form" action="/action_page.php">
+                            <div id="input-movie-name" class="mb-3 mt-3">
+                                <input id="input" type="search" class="form-control" id="search" placeholder="Enter movie name" name="movie">
+                            </div>
+
+                            <div class="mb-3">
+                                <input id="movie-rating" type="number" class="form-control" id="pwd" placeholder="Enter rating" name="movie-rating" max="10" min="5" step="0.1">
+                            </div>
+
+                            <select id="category-select" class="form-select mb-3" aria-label="Default select example">
+                                <option selected value="All">All</option>
+                            </select>
+
+                            <select id="rating_sort" class="form-select mb-3" aria-label="Default select example">
+                                <option value="default">Default</option>
+                                <option value="heigh">Rating(height to low)</option>
+                                <option value="low">Rating(low to heigh)</option>
+                            </select>
+
+
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </form>
+                    </div>
+
+                    <div class="bottom-side">
+                        <h2 class="h2">Bookmarked movies</h2>
+
+                        <ul class="list-group" id="bookmarks-wrapper">
+                            <!-- <li class="list-group-item p-2">
+                                <h3 class="h6">Avenger: Infinity war</h3>
+                                <button type="button" class="btn btn-danger py-1">Remove</button>
+                            </li>
+                            <li class="list-group-item p-2">
+                                <h3 class="h6">Avenger: The infinity </h3>
+                                <button type="button" class="btn btn-danger py-1">Remove</button>
+                            </li>
+                            <li class="list-group-item p-2">
+                                <h3 class="h6">Avenger: Action</h3>
+                                <button type="button" class="btn btn-danger py-1">Remove</button>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- right -->
+                <div class="col-md-8">
+                    <div class="p-3">
+                        <!-- <h2 class="h4">
+                            Search result:
+                            <span id="">0</span>
+                        </h2> -->
+
+                        <div id="alert" class="alert alert-info">
+                            <strong> Qidiruv natijasi:</strong> You should <a href="#" class="alert-link">read this message</a>.
+
+                        </div>
+
+                        <ul class="row m-0 p-0 gap-3 mb-3" id="movie_list">
+                            <!-- <li class="col p-0 mb-2">
+                                <div class="card">
+                                    <img class="w-100" src="https://picsum.photos/300/200" alt="image">
+
+                                    <div class="card-body">
+                                        <h4 class="card-title">John Doe</h4>
+                                        <p class="card-text d-flex align-items-center fs-5 mb-2">
+                                            <img class="me-1" src="./images/kalendar.png" width="20" height="20">
+                                            <span class="movie-year">2018</span>
+                                        </p>
+                                        <p class="card-text d-flex align-items-center fs-5 mb-2">
+                                            <img class="me-1" src="./images/star.png" width="20" height="20">
+                                            <span class="movie-rating">8.1</span>
+                                        </p>
+
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <button type="button" class="btn btn-outline-primary border-2">Watch trailer</button>
+                                            <button type="button" class="btn btn-outline-success border-2">More info</button>
+                                            <button type="button" class="btn btn-outline-info border-2">Bookmark</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> -->
+                        </ul>
+
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4 </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade movie-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title " id="exampleModalLabel"><span class="text-danger fw-bolder fs-4">Movie title:</span> <span class="movie-modal-heading"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span class="text-danger fw-bolder fs-6">Summary : </span>
+                    <br>
+                    <span class="movie-modal-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ipsa provident porro nostrum nisi quia, quidem aliquid ab fuga corrupti, cumque iure reiciendis iste hic blanditiis culpa eaque beatae. Placeat velit, recusandae voluptas inventore, vitae cupiditate culpa, suscipit dolorum ut optio quis? Consequatur ab fugit aperiam accusantium, quae saepe adipisci maiores architecto culpa sit itaque nemo nobis modi fugiat molestias iusto dicta quas nam facere vitae enim cum quis, quia odio! Accusantium sapiente numquam, quis laborum fugit mollitia at asperiores. Pariatur eum veniam blanditiis officia, deserunt est labore reprehenderit molestias, doloremque nostrum sint assumenda quis ipsam velit tenetur reiciendis dolorem.
+                    </span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <template id="template-card">
+        <li class="width-45 p-0 mb-2">
+            <div class="card">
+                <a class="movie-youtube-link d-inline-block" href=""><img id="card-img" class="w-100 movie-youtube-link" src="https://picsum.photos/300/200" alt="image"></a>
+
+                <div class="card-body">
+                    <h4 class="card-title">John Doe</h4>
+
+                    <p class="h5 card-text fs-5 mb-2">
+                        Categories: <span class="movie-category"> </span>
+                    </p>
+
+                    <p class="card-text d-flex align-items-center fs-5 mb-2">
+                        <img class="me-1" src="./images/kalendar.png" width="20" height="20">
+                        <span class="movie-year">2018</span>
+                    </p>
+
+                    <p class="card-text d-flex align-items-center fs-5 mb-2">
+                        <img class="me-1" src="./images/star.png" width="20" height="20">
+                        <span class="movie-rating">8.1</span>
+                    </p>
+
+                    <div class="d-flex justify-content-center gap-2">
+                        <a type="button" href="" class="movie-youtube-linkk btn btn-outline-primary border-2">Watch trailer</a>
+                        <button type="button" class="btn btn-outline-success border-2 modal-open-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            More info
+                        </button>
+                        <!-- <button type="button" class="btn btn-outline-success border-2">More info</button> -->
+                        <button type="button" class="btn btn-outline-info border-2 bookmark-btn">Bookmark</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </template>
+
+    <template id="bookmarkTemplate">
+        <li class="list-group-item p-2">
+            <h3 class="h6 movie-title">Avenger: Infinity war</h3>
+            <button type="button" class="btn btn-danger py-1 btn-remove">Remove</button>
+        </li>
+    </template>
+
+    <script src="./js/movies.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
